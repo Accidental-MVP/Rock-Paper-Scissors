@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Rock Paper Scissors Game</h1>
+  
+  <div id="player-setup">
+    <input type="text" id="playerName" placeholder="Enter your name" maxlength="20">
+    <button onclick="setPlayerName()">Set Name</button>
+  </div>
+
+  <button id="startGame" onclick="startGame()">Start Game</button>
+  <button id="endGame" onclick="showEndGameOptions()" style="display: none;">End Game</button>
+
+  <div id="game-container">
+    <div class="score">
+      <span><span id="playerNameDisplay">Player</span>: <span id="playerScore">0</span></span>
+      <span style="margin: 0 20px;">|</span>
+      <span>Computer: <span id="computerScore">0</span></span>
+    </div>
+
+    <div class="game-buttons">
+      <button onclick="playGame('rock')">✊ Rock</button>
+      <button onclick="playGame('paper')">✋ Paper</button>
+      <button onclick="playGame('scissors')">✌️ Scissors</button>
+    </div>
+
+    <p id="result"></p>
+  </div>
+
+  <div id="leaderboard" style="display: none;">
+    <h2>Session Scoreboard</h2>
+    <div id="leaderboard-entries"></div>
+  </div>
+
+  <div id="endGameOptions" style="display: none;">
+    <button onclick="continueWithSamePlayer()">Continue as <span id="currentPlayerDisplay"></span></button>
+    <button onclick="switchPlayer()">Switch Player</button>
+    <button onclick="completeReset()" class="reset-button">End Session</button>
+  </div>
+
+  <button id="helpButton" class="help-button">
+    <span class="help-icon">?</span>
+  </button>
+
+  <div id="shortcutsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Keyboard Shortcuts</h2>
+      <div class="shortcuts-list">
+        <ul>
+          <li><span class="key">Enter</span> Start game / Confirm name</li>
+          <li><span class="key">Esc</span> End game</li>
+          <li><span class="key">1</span> or <span class="key">R</span> Rock</li>
+          <li><span class="key">2</span> or <span class="key">P</span> Paper</li>
+          <li><span class="key">3</span> or <span class="key">S</span> Scissors</li>
+          <li><span class="key">C</span> Continue as same player</li>
+          <li><span class="key">N</span> New player</li>
+          <li><span class="key">X</span> End session</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 

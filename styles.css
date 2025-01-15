@@ -1,0 +1,315 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0,255,136,0.5);
+  font-size: clamp(1.5em, 5vw, 2.5em);
+  margin-bottom: 30px;
+  width: 90%;
+  max-width: 600px;
+}
+
+button {
+  padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
+  margin: 10px;
+  font-size: clamp(14px, 2vw, 16px);
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: fit-content;
+}
+
+button:hover {
+  background: #00ff88;
+  color: #1a1a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,255,136,0.4);
+}
+
+#result {
+  margin-top: 30px;
+  font-size: clamp(16px, 2vw, 18px);
+  padding: clamp(10px, 3vw, 20px);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
+  width: 90%;
+  max-width: 600px;
+}
+
+.score {
+  font-size: clamp(20px, 4vw, 28px);
+  margin: 20px auto;
+  padding: clamp(10px, 3vw, 20px);
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 600px;
+}
+
+#game-container {
+  display: none;
+  animation: slideDown 0.5s ease;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.game-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 20px);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.choice-icon {
+  font-size: clamp(18px, 3vw, 24px);
+  margin-right: 8px;
+}
+
+.winner-glow {
+  animation: winnerPulse 1s infinite;
+}
+
+@keyframes winnerPulse {
+  0% { text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+  50% { text-shadow: 0 0 20px rgba(0,255,136,0.8); }
+  100% { text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+}
+
+/* Media Queries for extra small devices */
+@media screen and (max-width: 320px) {
+  body {
+    padding: 10px;
+  }
+  
+  .game-buttons {
+    gap: 5px;
+  }
+  
+  button {
+    padding: 8px 15px;
+    margin: 5px;
+  }
+}
+
+/* Media Queries for larger screens */
+@media screen and (min-width: 1200px) {
+  #game-container {
+    max-width: 800px;
+  }
+  
+  .game-buttons {
+    gap: 30px;
+  }
+}
+
+/* Add these new styles */
+#player-setup {
+  margin: 20px 0;
+}
+
+#playerName {
+  padding: 10px 15px;
+  border: 2px solid #00ff88;
+  border-radius: 25px;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#playerName::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#playerName:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,255,136,0.4);
+}
+
+#leaderboard {
+  margin-top: 30px;
+  width: 90%;
+  max-width: 600px;
+}
+
+#leaderboard h2 {
+  color: #00ff88;
+  margin-bottom: 20px;
+}
+
+.leaderboard-entry {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leaderboard-entry.highlight {
+  border: 2px solid #00ff88;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px rgba(0,255,136,0.2);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(0,255,136,0.6);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #player-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  #playerName {
+    width: 80%;
+    margin-right: 0;
+  }
+}
+
+/* Replace the keyboard-hints styles with these modal styles */
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 255, 136, 0.2);
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.help-button:hover {
+    background: #00ff88;
+    color: #1a1a2e;
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #00ff88;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 500px;
+    animation: slideDown 0.3s ease;
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #00ff88;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    transform: scale(1.2);
+}
+
+.shortcuts-list {
+    margin-top: 20px;
+}
+
+.shortcuts-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shortcuts-list li {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.key {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-family: monospace;
+    min-width: 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        margin: 30% auto;
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .shortcuts-list li {
+        font-size: 14px;
+    }
+}
